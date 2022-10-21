@@ -1,0 +1,8 @@
+.navbar {
+  padding-inline: 50px;
+}
+
+.form-inline {
+  display: flex;
+  gap: 10px;
+}
