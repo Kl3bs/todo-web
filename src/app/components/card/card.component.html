@@ -1,18 +1,22 @@
 <div class="card">
   <span class="badge" style="background-color: blue">Primary</span>
 
-  <h4 class="card-title">Card title</h4>
+  <h4 class="card-title">{{ taskData.title }}</h4>
 
   <div class="card-description">
-    <p>Olá eu sou a descrição do card, tudo bem?</p>
+    <p>{{ taskData.description }}</p>
   </div>
 
   <div class="card-bottom">
     <div class="row">
-      <div class="col"><i class="bi bi-calendar4-week"></i> 22/10/2022</div>
-      <div class="col"><i class="bi bi-clock"></i> 30min</div>
+      <div class="col-4">
+        <i class="bi bi-calendar4-week"></i> {{ taskData.date_hour | date }}
+      </div>
+      <div class="col-4">
+        <i class="bi bi-clock"></i> {{ taskData.duration_time }}
+      </div>
 
-      <div class="col"><i class="bi bi-geo"></i>Maceió</div>
+      <div class="col-4"><i class="bi bi-geo"></i>{{ taskData.place }}</div>
     </div>
   </div>
 </div>

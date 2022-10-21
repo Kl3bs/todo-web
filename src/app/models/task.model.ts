@@ -1,7 +1,8 @@
 export interface Task {
+  id?: number;
   title: string;
   description: string;
   place: string;
-  duration_time: number;
-  date_hour: Date;
+  duration_time: string;
+  date_hour: string;
 }

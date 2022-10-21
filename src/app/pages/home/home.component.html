@@ -2,12 +2,8 @@
   <h1 class="page-title">Aqui estão as suas tarefas</h1>
 
   <div class="row">
-    <div class="col-sm-4">
-      <app-card></app-card>
+    <div class="col-sm-4" *ngFor="let task of task_list">
+      <app-card [taskData]="task"></app-card>
     </div>
-
-    <div class="col-sm-4"><div class="card">Lorem ipsum</div></div>
-
-    <div class="col-sm-4"><div class="card">Lorem ipsum</div></div>
   </div>
 </div>
