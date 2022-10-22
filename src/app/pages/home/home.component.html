@@ -1,9 +1,19 @@
-<div class="container">
-  <h1 class="page-title">Aqui estão as suas tarefas</h1>
+<div class="container mt-4">
+  <div class="add-task"><i class="bi bi-plus-lg"></i> Adicionar tarefa</div>
+
+  <div class="row mt-4">
+    <p class="text">Atividades Criadas</p>
+  </div>
 
   <div class="row">
-    <div class="col-sm-4" *ngFor="let task of task_list">
+    <div class="col-sm-3" *ngFor="let task of task_list; let i = index">
       <app-card [taskData]="task"></app-card>
+    </div>
+
+    <div class="col-sm-4">
+      <div class="add-more">
+        <i class="bi bi-plus-circle-dotted"></i>
+      </div>
     </div>
   </div>
 </div>

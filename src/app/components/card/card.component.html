@@ -1,22 +1,31 @@
 <div class="card">
-  <span class="badge" style="background-color: blue">Primary</span>
+  <!-- <span class="badge" style="background-color: blue">Primary</span> -->
 
-  <h4 class="card-title">{{ taskData.title }}</h4>
+  <div class="card-top">
+    <h4 class="card-title d-flex justify-content-between">
+      {{ taskData.title }} <i class="bi bi-three-dots-vertical"></i>
+    </h4>
 
-  <div class="card-description">
-    <p>{{ taskData.description }}</p>
+    <div class="card-description">
+      <p>{{ taskData.description }}</p>
+    </div>
   </div>
 
   <div class="card-bottom">
-    <div class="row">
-      <div class="col-4">
+    <div class="d-flex justify-content-between">
+      <p>
+        <i class="bi bi-calendar4-week"></i> {{ taskData.date_hour | date }}
+      </p>
+      <div class="tag">Urgente</div>
+
+      <!-- <div class="col-4">
         <i class="bi bi-calendar4-week"></i> {{ taskData.date_hour | date }}
       </div>
       <div class="col-4">
         <i class="bi bi-clock"></i> {{ taskData.duration_time }}
       </div>
 
-      <div class="col-4"><i class="bi bi-geo"></i>{{ taskData.place }}</div>
+      <div class="col-4"><i class="bi bi-geo"></i>{{ taskData.place }}</div> -->
     </div>
   </div>
 </div>

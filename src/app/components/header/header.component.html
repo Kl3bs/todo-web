@@ -1,25 +1,50 @@
-<!-- Image and text -->
-<nav class="navbar navbar-light bg-light">
-  <a class="navbar-brand" href="#">
-    <img
-      src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg"
-      width="30"
-      height="30"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    Bootstrap
-  </a>
+<div class="container">
+  <!-- Image and text -->
+  <nav class="navbar">
+    <a class="navbar-brand" href="#">
+      <img
+        src="../../../assets/logo.png"
+        class="d-inline-block align-top logo"
+        alt=""
+      />
+    </a>
+    <!-- 
+    <form class="form-inline">
+      <input
+        class="form-control mr-sm-4"
+        type="search"
+        placeholder="Título da tarefa"
+        aria-label="Search"
+      />
+      <button class="btn btn-submit my-2 my-sm-0" type="submit">Buscar</button>
+    </form> -->
 
-  <form class="form-inline">
-    <input
-      class="form-control mr-sm-2"
-      type="search"
-      placeholder="Search"
-      aria-label="Search"
-    />
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-      Search
-    </button>
-  </form>
-</nav>
+    <form class="form-inline">
+      <div>
+        <div
+          #collapse="ngbCollapse"
+          [animation]="true"
+          [(ngbCollapse)]="isCollapsed"
+          style="max-width: 300px"
+        >
+          <input
+            class="form-control mr-sm-4"
+            type="search"
+            placeholder="Título da tarefa"
+            aria-label="Search"
+          />
+          <!-- <button class="btn btn-submit my-2 my-sm-0" type="submit">
+            Buscar
+          </button> -->
+        </div>
+      </div>
+
+      <i
+        aria-controls="collapseExample"
+        (click)="collapse.toggle()"
+        [attr.aria-expanded]="!isCollapsed"
+        class="bi bi-search search"
+      ></i>
+    </form>
+  </nav>
+</div>
