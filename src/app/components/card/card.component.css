@@ -11,16 +11,37 @@
   min-height: 350px;
 
   background-color: rgb(255, 255, 255);
-  box-shadow: 0px 0px 8px 0px rgb(0 0 0 / 75%);
+  box-shadow: 0px 0px 51px -6px rgba(0, 0, 0, 0.2);
+
   margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border: none;
+  padding-bottom: 20px;
 }
 
 .card .card-title {
   margin-top: 10px;
   font-weight: bold;
+  color: #a32155;
+}
+
+.card .card-title i {
+  cursor: pointer;
+}
+.card .drop-menu {
+  position: absolute;
+  right: 19px;
+  top: 30px;
+}
+
+.card .card-description {
+  color: black;
+}
+
+.card .card-bottom .date-wrapper {
+  margin: 0;
 }
 
 .card .card-top {
@@ -33,7 +54,8 @@
 
 .card .card-bottom {
   padding-left: 20px;
-  padding-right: 5px;
+  padding-right: 0;
+  color: #57112d;
 }
 
 .card .card-bottom i {
@@ -43,4 +65,18 @@
 .card .col-4 {
   padding: 0;
   margin: 5px;
+}
+
+.tag {
+  background: #d62b70;
+  height: fit-content;
+  padding-inline: 20px;
+  border-radius: 10px.;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  color: #fff;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }

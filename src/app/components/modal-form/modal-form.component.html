@@ -1,0 +1,99 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Adicionar Tarefa</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="task_form">
+      <div class="mb-3">
+        <label for="title">Título</label>
+        <div class="input-group">
+          <input
+            id="title"
+            type="text"
+            class="form-control"
+            formControlName="title"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description">Descrição</label>
+        <div class="input-group">
+          <input
+            id="description"
+            type="text"
+            class="form-control"
+            formControlName="description"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="place">Local</label>
+        <div class="input-group">
+          <input
+            id="place"
+            type="text"
+            class="form-control"
+            formControlName="place"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="date">Data</label>
+        <div class="input-group">
+          <input
+            id="date"
+            class="form-control"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            ngbDatepicker
+            formControlName="date_hour"
+            #dp="ngbDatepicker"
+          />
+          <button
+            class="btn btn-outline-secondary calendar"
+            (click)="dp.toggle()"
+            type="button"
+          >
+            <i class="bi bi-calendar3"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="time">Tempo de duração (Minutos)</label>
+        <div class="input-group">
+          <input
+            id="time"
+            mask="999"
+            type="text"
+            class="form-control"
+            formControlName="duration_time"
+          />
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button
+      [disabled]="task_form.invalid"
+      type="button"
+      class="btn submit"
+      (click)="modal.close(true)"
+    >
+      Salvar
+    </button>
+  </div>
+</ng-template>
+
+<div class="add-more" (click)="open(content)">
+  <i class="bi bi-plus-lg"></i>
+</div>
