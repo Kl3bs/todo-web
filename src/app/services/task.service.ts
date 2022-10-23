@@ -33,7 +33,7 @@ export class TaskService {
   }
 
   update(task: Task) {
-    return this.http.put(`${environment.BASE_URL}/tasks`, task).pipe(
+    return this.http.put(`${environment.BASE_URL}/tasks/${task.id}`, task).pipe(
       tap(() => {
         this._refresh.next();
       })

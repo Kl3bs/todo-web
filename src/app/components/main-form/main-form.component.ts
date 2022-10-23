@@ -29,54 +29,46 @@ export class MainFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.data);
-    this.task_form.patchValue({
+    let date = this.getJsonDate(this.data.date_hour);
+
+    this.task_form.setValue({
       title: this.data.title,
       description: this.data.description,
       place: this.data.place,
       date_hour: {
-        year: 2022,
-        month: 10,
-        day: 11,
+        year: date.yy,
+        month: date.mm,
+        day: date.dd,
       },
       duration_time: this.data.duration_time,
     });
   }
 
-  open(content: any) {
-    this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
-      .result.then(
-        (result) => {
-          if (result) {
-            let obj = this.task_form.value;
-            console.log(obj);
-            obj.date_hour = `${obj.date_hour.year}/${obj.date_hour.month}/${obj.date_hour.day}`;
+  getJsonDate(text: string) {
+    var { 0: y, 1: m, 2: d } = text.split('-');
+    let dd = parseInt(d);
+    let mm = parseInt(m);
+    let yy = parseInt(y);
 
-            try {
-              this.taskService.create(obj).subscribe((response) => {
-                console.log(response);
-                this.task_form.reset();
-                this.toastService.success('Tarefa criada com sucesso!');
-              });
-            } catch (error) {
-              console.error(error);
-            }
-          }
-        },
-        (reason) => {
-          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        }
-      );
+    return { yy, mm, dd };
   }
 
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
+  dismiss() {
+    this.modalService.dismissAll();
+  }
+  onSubmit() {
+    let task = this.task_form.value;
+    Object.assign(task, { id: this.data.id });
+    task.date_hour = `${task.date_hour.year}/${task.date_hour.month}/${task.date_hour.day}`;
+
+    try {
+      this.taskService.update(task).subscribe((response) => {
+        this.toastService.success('Tarefa editada com sucesso!');
+        this.modalService.dismissAll();
+      });
+    } catch (error) {
+      console.error(error);
+      this.toastService.error('Não foi possível editar a tarefa!');
     }
   }
 }

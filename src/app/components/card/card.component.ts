@@ -24,15 +24,9 @@ export class CardComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  open() {
+  open(task: Task) {
     const modalRef = this.modalService.open(MainFormComponent);
-    modalRef.componentInstance.data = {
-      title: 'Notificação de teste',
-      description: 'Olá, eu sou apenas um teste!',
-      duration_time: 10000,
-      date_hour: '2022-10-24T18:00:00.000Z',
-      place: 'Maceió - AL',
-    };
+    modalRef.componentInstance.data = task;
     console.log(modalRef);
   }
 

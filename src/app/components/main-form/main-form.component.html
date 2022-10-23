@@ -77,8 +77,17 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button [disabled]="task_form.invalid" type="button" class="btn submit">
-      Salvar
+    <button (click)="dismiss()" type="button" class="btn btn-outline-secondary">
+      Cancelar
+    </button>
+
+    <button
+      (click)="onSubmit()"
+      [disabled]="task_form.invalid"
+      type="button"
+      class="btn submit"
+    >
+      Confirmar edição
     </button>
   </div>
 </div>

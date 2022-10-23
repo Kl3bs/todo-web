@@ -38,7 +38,6 @@ export class ModalFormComponent implements OnInit {
         (result) => {
           if (result) {
             let obj = this.task_form.value;
-            console.log(obj);
             obj.date_hour = `${obj.date_hour.year}/${obj.date_hour.month}/${obj.date_hour.day}`;
 
             try {
