@@ -24,6 +24,12 @@ export class TaskService {
     return this.http.get<Task>(`${environment.BASE_URL}/tasks/${id}`);
   }
 
+  getByTitle(title: string) {
+    return this.http.get<Task[]>(
+      `${environment.BASE_URL}/tasks?title=${title}`
+    );
+  }
+
   create(task: Task) {
     return this.http.post(`${environment.BASE_URL}/tasks`, task).pipe(
       tap(() => {

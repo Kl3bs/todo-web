@@ -14,7 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class CardComponent implements OnInit {
   @ViewChild(ModalFormComponent) child: ModalFormComponent;
 
-  @Input() taskData!: Task;
+  @Input() taskData: Task;
 
   constructor(
     private taskService: TaskService,
@@ -22,7 +22,7 @@ export class CardComponent implements OnInit {
     private modalService: NgbModal
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   open(task: Task) {
     const modalRef = this.modalService.open(MainFormComponent);

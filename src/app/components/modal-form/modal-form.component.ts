@@ -1,5 +1,4 @@
 import { TaskService } from './../../services/task.service';
-import { Task } from './../../models/task.model';
 import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -29,7 +28,7 @@ export class ModalFormComponent implements OnInit {
     duration_time: ['', Validators.required],
   });
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   open(content: any) {
     this.modalService
@@ -55,6 +54,10 @@ export class ModalFormComponent implements OnInit {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
         }
       );
+  }
+
+  dismiss() {
+    this.modalService.dismissAll();
   }
 
   private getDismissReason(reason: any): string {

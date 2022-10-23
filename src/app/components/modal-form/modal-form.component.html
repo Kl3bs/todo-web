@@ -83,6 +83,10 @@
     </form>
   </div>
   <div class="modal-footer">
+    <button (click)="dismiss()" type="button" class="btn btn-outline-secondary">
+      Cancelar
+    </button>
+
     <button
       [disabled]="task_form.invalid"
       type="button"

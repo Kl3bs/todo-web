@@ -1,3 +1,4 @@
+import { FormBuilder } from '@angular/forms';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalFormComponent } from './modal-form.component';
@@ -8,9 +9,9 @@ describe('ModalFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ModalFormComponent ]
-    })
-    .compileComponents();
+      declarations: [ModalFormComponent],
+      imports: [FormBuilder],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { TaskService } from './../../services/task.service';
 import { Task } from './../../models/task.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,10 @@ export class HomeComponent implements OnInit {
 
   task_list: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(
+    private taskService: TaskService,
+    private dataService: DataService
+  ) {}
 
   ngOnInit(): void {
     this.getAllTasks();
@@ -24,7 +28,11 @@ export class HomeComponent implements OnInit {
 
   private getAllTasks() {
     this.taskService.getAll().subscribe((response) => {
-      this.task_list = response;
+      this.dataService.changeTaskList(response);
+
+      this.dataService.currentTasks.subscribe((tasks: Task[]) => {
+        this.task_list = tasks;
+      });
       console.log(response);
     });
   }
