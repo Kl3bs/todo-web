@@ -37,7 +37,7 @@ export class ModalFormComponent implements OnInit {
         (result) => {
           if (result) {
             let obj = this.task_form.value;
-            obj.date_hour = `${obj.date_hour.year}/${obj.date_hour.month}/${obj.date_hour.day}`;
+            obj.date_hour = `${obj.date_hour.year}-${obj.date_hour.month}-${obj.date_hour.day}`;
 
             try {
               this.taskService.create(obj).subscribe((response) => {
