@@ -1,4 +1,4 @@
-## Instalção
+## Instalação
 
 Este projeto requer [Node.js](https://nodejs.org/) v10+ para ser executado.
 
