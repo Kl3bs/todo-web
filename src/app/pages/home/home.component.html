@@ -4,12 +4,24 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-3" *ngFor="let task of task_list; let i = index">
+    <div
+      class="col-md-4 col-xs-12 col-sm-6"
+      *ngFor="let task of task_list; let i = index"
+    >
       <app-card [taskData]="task"></app-card>
     </div>
 
-    <div class="col-sm-3">
+    <div class="col-md-4 col-xs-12 col-sm-6">
       <app-modal-form></app-modal-form>
     </div>
+
+    <ngx-spinner
+      bdColor="rgba(51,51,51,0.8)"
+      size="medium"
+      color="#fff"
+      type="ball-8bits"
+    >
+      <p class="text-white">Carregando...</p>
+    </ngx-spinner>
   </div>
 </div>

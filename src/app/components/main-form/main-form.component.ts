@@ -59,7 +59,7 @@ export class MainFormComponent implements OnInit {
   onSubmit() {
     let task = this.task_form.value;
     Object.assign(task, { id: this.data.id });
-    task.date_hour = `${task.date_hour.year}/${task.date_hour.month}/${task.date_hour.day}`;
+    task.date_hour = `${task.date_hour.year}-${task.date_hour.month}-${task.date_hour.day}`;
 
     try {
       this.taskService.update(task).subscribe((response) => {

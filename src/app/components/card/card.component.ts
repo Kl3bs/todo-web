@@ -27,17 +27,14 @@ export class CardComponent implements OnInit {
   open(task: Task) {
     const modalRef = this.modalService.open(MainFormComponent);
     modalRef.componentInstance.data = task;
-    console.log(modalRef);
   }
 
   deleteTask(id: any) {
     try {
       this.taskService.delete(id).subscribe((response) => {
-        console.log(response);
         this.toastService.success('Tarefa removida com sucesso!');
       });
     } catch (error) {
-      console.error(error);
       this.toastService.error('Houve um erro ao remover a tarefa!');
     }
   }

@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -14,6 +14,9 @@ import { CardComponent } from './components/card/card.component';
 import { ModalFormComponent } from './components/modal-form/modal-form.component';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { MainFormComponent } from './components/main-form/main-form.component';
+import { NgxLoadingModule } from 'ngx-loading';
+import { CustomHttpInterceptor } from './services/interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -32,8 +35,17 @@ import { MainFormComponent } from './components/main-form/main-form.component';
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     HotToastModule.forRoot(),
+    NgxLoadingModule.forRoot({}),
+    NgxSpinnerModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CustomHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

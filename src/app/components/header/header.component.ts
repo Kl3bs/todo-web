@@ -28,7 +28,7 @@ export class HeaderComponent implements AfterViewInit {
     fromEvent(this.input.nativeElement, 'keyup')
       .pipe(
         filter(Boolean),
-        debounceTime(150),
+        debounceTime(300),
         distinctUntilChanged(),
         tap((text) => {
           let value = this.input.nativeElement.value;

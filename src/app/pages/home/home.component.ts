@@ -2,6 +2,8 @@ import { TaskService } from './../../services/task.service';
 import { Task } from './../../models/task.model';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
+import { BehaviorSubject } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,8 @@ export class HomeComponent implements OnInit {
     private dataService: DataService
   ) {}
 
+  loading = new BehaviorSubject<boolean>(false);
+
   ngOnInit(): void {
     this.getAllTasks();
 
@@ -33,7 +37,6 @@ export class HomeComponent implements OnInit {
       this.dataService.currentTasks.subscribe((tasks: Task[]) => {
         this.task_list = tasks;
       });
-      console.log(response);
     });
   }
 }
