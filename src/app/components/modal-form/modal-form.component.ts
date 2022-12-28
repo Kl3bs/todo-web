@@ -32,7 +32,7 @@ export class ModalFormComponent implements OnInit {
 
   open(content: any) {
     this.modalService
-      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .open(content, { ariaLabelledBy: 'task-modal' })
       .result.then(
         (result) => {
           if (result) {
