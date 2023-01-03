@@ -24,7 +24,7 @@ O projeto **TODO WEB** é uma lista de afazeres desenvolvida com o intuito de ap
 
 ## 🚀 Tecnologias utilizadas
 
-O projeto foi desenvolvido utilizando as seguintes tecnologias
+O projeto foi desenvolvido utilizando as seguintes tecnologias:
 
 - [Angular](https://angular.io)
 - [Bootstrap](https://getbootstrap.com/)
