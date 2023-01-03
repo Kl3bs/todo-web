@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="src/assets/images/img3.png">
+    <img src="src/assets/images/logo_alt.png">
 </h1>
 
 <h1>
@@ -54,11 +54,11 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 **Windows (Json server)**
 
 ```bash
-	# Iniciando o Json server
-    $ npx json-server db.json --routes routes.json
+# Iniciando o Json server
+$ npx json-server db.json --routes routes.json
 
-    # Executando o projeto
-    $ npx ng s
+# Executando o projeto
+$ npx ng s
 ```
 
 ---
