@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="src/assets/logo.png">
+    <img src="src/assets/images/img3.png">
 </h1>
 
 <h1>
@@ -68,8 +68,8 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias
 Seguir este passo caso queira fazer uso da [API desenvolvida para este projeto](https://github.com/Kl3bs/todo-api).
 
 ```bash
-	# Executando o projeto
-    $ npx ng s
+# Executando o projeto
+$ npx ng s
 ```
 
 ---
