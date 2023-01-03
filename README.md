@@ -1,25 +1,75 @@
-## Instalação
+<h1 align="center">
+    <img src="src/assets/images/logo.png">
+</h1>
 
-Este projeto requer [Node.js](https://nodejs.org/) v10+ para ser executado.
+<h1>
+    <img src="src/assets/images/img1.png">
+</h1>
 
-Instalação das dependências.
+# Indice
 
-```sh
-cd todo-web
-npm i
+- [Sobre](#-sobre)
+- [Tecnologias Utilizadas](#-tecnologias-utilizadas)
+- [Como baixar o projeto](#-como-baixar-o-projeto)
+
+## 🔖&nbsp; Sobre
+
+O projeto **TODO WEB** é uma lista de afazeres desenvolvida com o intuito de aprimorar meus conhecimentos dentro do desenvolvimento front-end.
+
+---
+
+## 🚀 Tecnologias utilizadas
+
+O projeto foi desenvolvido utilizando as seguintes tecnologias
+
+- [Angular](https://angular.io)
+- [Bootstrap](https://getbootstrap.com/)
+- [RxJs](https://rxjs.dev/)
+
+---
+
+## 🗂 Como baixar o projeto
+
+```bash
+
+    # Clonar o repositório
+    $ git clone https://github.com/Kl3bs/todo-web.git
+
+    # Entrar no diretório
+    $ cd todo-web
+
+    # Instalar as dependências
+    $ npm install
+
 ```
 
-## Execução do projeto (JSON server)
+---
 
-```sh
-json-server db.json --routes routes.json 
-ng s
+## 💻 Como executar o projeto
+
+**Windows (Json server)**
+
+```bash
+	# Iniciando o Json server
+    $ npx json-server db.json --routes routes.json
+
+    # Executando o projeto
+    $ npx ng s
 ```
 
-## Execução do projeto (Todo API)
+---
 
-Caso queira usar a api que foi desenvolvida para este projeto, basta seguir o passo a passo para [configurar a API](https://github.com/Kl3bs/todo-api) e executar o comando abaixo:
+**Windows (TODO API)**
 
-```sh
-ng s
+Seguir este passo caso queira fazer uso da [API desenvolvida para este projeto](https://github.com/Kl3bs/todo-api).
+
+```bash
+	# Executando o projeto
+    $ npx ng s
 ```
+
+---
+
+**MacOS**
+
+Basta seguir os mesmos passos, sem o uso do comando **npx**.
