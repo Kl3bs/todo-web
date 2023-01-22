@@ -18,6 +18,10 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { CustomHttpInterceptor } from './services/interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+import { DxDataGridModule } from 'devextreme-angular';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { TableComponent } from './pages/table/table.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +30,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     CardComponent,
     ModalFormComponent,
     MainFormComponent,
+    TableComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,6 +42,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     HotToastModule.forRoot(),
     NgxLoadingModule.forRoot({}),
     NgxSpinnerModule,
+    DxDataGridModule,
+    NgxPaginationModule,
   ],
   providers: [
     {
