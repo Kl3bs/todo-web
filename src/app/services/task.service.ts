@@ -26,7 +26,7 @@ export class TaskService {
 
   getByTitle(title: string) {
     return this.http.get<Task[]>(
-      `${environment.BASE_URL}/tasks?title=${title}`
+      `${environment.BASE_URL}/tasks?title_like=${title}`
     );
   }
 
