@@ -1,9 +1,9 @@
 import { TaskService } from './../../services/task.service';
-import { Task } from './../../models/task.model';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/services/data.service';
 import { BehaviorSubject } from 'rxjs';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { HotToastService } from '@ngneat/hot-toast';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
-    private dataService: DataService
+    private dataService: DataService,
+    private toastService: HotToastService
   ) {}
 
   loading = new BehaviorSubject<boolean>(false);
@@ -38,5 +39,26 @@ export class HomeComponent implements OnInit {
         this.task_list = tasks;
       });
     });
+  }
+
+  deleteTask(id: number) {
+    try {
+      this.taskService.delete(id).subscribe((response) => {
+        this.toastService.success('Tarefa removida com sucesso!');
+      });
+    } catch (error) {
+      this.toastService.error('Houve um erro ao remover a tarefa!');
+    }
+  }
+
+  addNewTask(task: Task) {
+    console.log(task);
+    try {
+      this.taskService.create(task).subscribe((response) => {
+        this.toastService.success('Tarefa criada com sucesso!');
+      });
+    } catch (error) {
+      this.toastService.error('Houve um erro ao criar a tarefa!');
+    }
   }
 }

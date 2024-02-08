@@ -8,11 +8,11 @@
       class="col-md-4 col-xs-12 col-sm-6"
       *ngFor="let task of task_list; let i = index"
     >
-      <app-card [taskData]="task"></app-card>
+      <app-card [taskData]="task" (emitTaskId)="deleteTask($event)"></app-card>
     </div>
 
     <div class="col-md-4 col-xs-12 col-sm-6">
-      <app-modal-form></app-modal-form>
+      <app-modal-form (emitNewTask)="addNewTask($event)"></app-modal-form>
     </div>
 
     <ngx-spinner

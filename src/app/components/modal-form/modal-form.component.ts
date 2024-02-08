@@ -1,9 +1,8 @@
-import { TaskService } from './../../services/task.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormBuilder, Validators } from '@angular/forms';
 
-import { HotToastService } from '@ngneat/hot-toast';
+import { Task } from 'src/app/models/task.model';
 
 @Component({
   selector: 'app-modal-form',
@@ -13,12 +12,9 @@ import { HotToastService } from '@ngneat/hot-toast';
 export class ModalFormComponent implements OnInit {
   closeResult = '';
 
-  constructor(
-    private modalService: NgbModal,
-    private fb: FormBuilder,
-    private taskService: TaskService,
-    private toastService: HotToastService
-  ) {}
+  @Output() emitNewTask = new EventEmitter<Task>();
+
+  constructor(private modalService: NgbModal, private fb: FormBuilder) {}
 
   task_form = this.fb.group({
     title: ['', Validators.required],
@@ -39,15 +35,7 @@ export class ModalFormComponent implements OnInit {
             let obj = this.task_form.value;
             obj.date_hour = `${obj.date_hour.year}-${obj.date_hour.month}-${obj.date_hour.day}`;
 
-            try {
-              this.taskService.create(obj).subscribe((response) => {
-                console.log(response);
-                this.task_form.reset();
-                this.toastService.success('Tarefa criada com sucesso!');
-              });
-            } catch (error) {
-              console.error(error);
-            }
+            this.emitNewTask.emit(obj as Task);
           }
         },
         (reason) => {

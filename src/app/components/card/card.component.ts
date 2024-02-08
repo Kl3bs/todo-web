@@ -1,9 +1,6 @@
 import { MainFormComponent } from './../main-form/main-form.component';
-import { TaskService } from './../../services/task.service';
 import { Task } from './../../models/task.model';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { HotToastService } from '@ngneat/hot-toast';
-import { ModalFormComponent } from '../modal-form/modal-form.component';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,31 +8,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css'],
 })
-export class CardComponent implements OnInit {
-  @ViewChild(ModalFormComponent) child: ModalFormComponent;
-
+export class CardComponent {
   @Input() taskData: Task;
+  @Output() emitTaskId = new EventEmitter<number>();
 
-  constructor(
-    private taskService: TaskService,
-    private toastService: HotToastService,
-    private modalService: NgbModal
-  ) {}
-
-  ngOnInit() {}
+  constructor(private modalService: NgbModal) {}
 
   open(task: Task) {
     const modalRef = this.modalService.open(MainFormComponent);
     modalRef.componentInstance.data = task;
   }
 
-  deleteTask(id: any) {
-    try {
-      this.taskService.delete(id).subscribe((response) => {
-        this.toastService.success('Tarefa removida com sucesso!');
-      });
-    } catch (error) {
-      this.toastService.error('Houve um erro ao remover a tarefa!');
-    }
+  deleteTask(id: number) {
+    this.emitTaskId.emit(id);
   }
 }

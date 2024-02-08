@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
+import { Task } from 'src/app/models/task.model';
 import { TaskService } from 'src/app/services/task.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { TaskService } from 'src/app/services/task.service';
 })
 export class MainFormComponent implements OnInit {
   closeResult = '';
-  data: any = {};
+  data: Task;
 
   constructor(
     private modalService: NgbModal,
