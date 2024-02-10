@@ -25,18 +25,18 @@ export class MainFormComponent implements OnInit {
     title: ['', Validators.required],
     description: ['', Validators.required],
     place: ['', Validators.required],
-    date_hour: ['', Validators.required],
+    full_date: ['', Validators.required],
     duration_time: ['', Validators.required],
   });
 
   ngOnInit(): void {
-    let date = this.getJsonDate(this.data.date_hour);
+    let date = this.getJsonDate(this.data.full_date);
 
     this.task_form.setValue({
       title: this.data.title,
       description: this.data.description,
       place: this.data.place,
-      date_hour: {
+      full_date: {
         year: date.yy,
         month: date.mm,
         day: date.dd,
@@ -60,7 +60,7 @@ export class MainFormComponent implements OnInit {
   onSubmit() {
     let task = this.task_form.value;
     Object.assign(task, { id: this.data.id });
-    task.date_hour = `${task.date_hour.year}-${task.date_hour.month}-${task.date_hour.day}`;
+    task.full_date = `${task.full_date.year}-${task.full_date.month}-${task.full_date.day}`;
 
     try {
       this.taskService.update(task).subscribe((response) => {

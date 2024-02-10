@@ -17,7 +17,7 @@ export class TaskService {
   }
 
   getAll() {
-    return this.http.get<Task[]>(`${environment.BASE_URL}/tasks`);
+    return this.http.get<Task[]>(`${environment.BASE_URL}/tasks/all`);
   }
 
   getById(id: number) {
@@ -31,7 +31,7 @@ export class TaskService {
   }
 
   create(task: Task) {
-    return this.http.post(`${environment.BASE_URL}/tasks`, task).pipe(
+    return this.http.post(`${environment.BASE_URL}/tasks/create`, task).pipe(
       tap(() => {
         this._refresh.next();
       })
@@ -47,7 +47,7 @@ export class TaskService {
   }
 
   delete(id: number) {
-    return this.http.delete(`${environment.BASE_URL}/tasks/${id}`).pipe(
+    return this.http.delete(`${environment.BASE_URL}/task/delete/${id}`).pipe(
       tap(() => {
         this._refresh.next();
       })

@@ -25,7 +25,7 @@
     <div class="d-flex justify-content-between">
       <p class="date-wrapper">
         <i class="bi bi-calendar4-week"></i>
-        {{ taskData.date_hour | date : "dd/MM/yyyy" }}
+        {{ taskData.full_date | date : "dd/MM/yyyy" }}
       </p>
       <div class="tag">
         <i class="bi bi-clock"></i> {{ taskData.duration_time }} min

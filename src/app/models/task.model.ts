@@ -5,5 +5,5 @@ export interface Task {
   description: string;
   place: string;
   duration_time: number;
-  date_hour: string;
+  full_date: string;
 }

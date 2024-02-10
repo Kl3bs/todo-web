@@ -4,6 +4,8 @@ import { DataService } from 'src/app/services/data.service';
 import { BehaviorSubject } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { Task } from 'src/app/models/task.model';
+import { IApiResponse } from 'src/app/models/IApiRespose';
+import { error } from 'console';
 
 @Component({
   selector: 'app-home',
@@ -35,9 +37,11 @@ export class HomeComponent implements OnInit {
     this.taskService.getAll().subscribe((response) => {
       this.dataService.changeTaskList(response);
 
-      this.dataService.currentTasks.subscribe((tasks: Task[]) => {
-        this.task_list = tasks;
-      });
+      this.dataService.currentTasks.subscribe(
+        (response: IApiResponse<Task[]>) => {
+          this.task_list = response.tasks;
+        }
+      );
     });
   }
 
@@ -53,12 +57,16 @@ export class HomeComponent implements OnInit {
 
   addNewTask(task: Task) {
     console.log(task);
-    try {
-      this.taskService.create(task).subscribe((response) => {
+
+    this.taskService.create(task).subscribe(
+      (response) => {
         this.toastService.success('Tarefa criada com sucesso!');
-      });
-    } catch (error) {
-      this.toastService.error('Houve um erro ao criar a tarefa!');
-    }
+      },
+
+      (error) => {
+        this.toastService.error('Houve um erro ao criar a tarefa!');
+        console.error(error);
+      }
+    );
   }
 }

@@ -20,7 +20,7 @@ export class ModalFormComponent implements OnInit {
     title: ['', Validators.required],
     description: ['', Validators.required],
     place: ['', Validators.required],
-    date_hour: ['', Validators.required],
+    full_date: ['', Validators.required],
     duration_time: ['', Validators.required],
   });
 
@@ -32,8 +32,9 @@ export class ModalFormComponent implements OnInit {
       .result.then(
         (result) => {
           if (result) {
+            console.log(this.task_form.value);
             let obj = this.task_form.value;
-            obj.date_hour = `${obj.date_hour.year}-${obj.date_hour.month}-${obj.date_hour.day}`;
+            obj.full_date = `${obj.full_date.year}-${obj.full_date.month}-${obj.full_date.day}`;
 
             this.emitNewTask.emit(obj as Task);
           }

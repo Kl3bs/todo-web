@@ -17,6 +17,14 @@ export class CustomHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     this.spinner.show();
 
+    //Add the token to the header
+    req = req.clone({
+      headers: req.headers.set(
+        'Authorization',
+        'Token' + ' 3f92acb684baa123c5b9e022f8d55aa6ddcb5d0e'
+      ),
+    });
+
     return next.handle(req).pipe(
       tap(
         (event: HttpEvent<any>) => {
