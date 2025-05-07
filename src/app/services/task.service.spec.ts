@@ -1,8 +1,9 @@
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { TaskService } from './task.service';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 describe('TaskService', () => {
   let service: TaskService;
@@ -20,15 +21,9 @@ describe('TaskService', () => {
   // };
   beforeEach(() => {
     TestBed.configureTestingModule({
-      // providers: [
-      //   {
-      //     provide: HttpClient,
-      //     useValue: httpStub,
-      //   },
-      // ],
-
-      imports: [HttpClientTestingModule],
-    });
+    imports: [],
+    providers: [provideHttpClient(withInterceptorsFromDi()), provideHttpClientTesting()]
+});
     service = TestBed.inject(TaskService);
   });
 

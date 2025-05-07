@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgxMaskModule, IConfig } from 'ngx-mask';
@@ -22,37 +22,31 @@ import { DxDataGridModule } from 'devextreme-angular';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { TableComponent } from './pages/table/table.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    CardComponent,
-    ModalFormComponent,
-    MainFormComponent,
-    TableComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    NgxMaskModule.forRoot(),
-    HotToastModule.forRoot(),
-    NgxLoadingModule.forRoot({}),
-    NgxSpinnerModule,
-    DxDataGridModule,
-    NgxPaginationModule,
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: CustomHttpInterceptor,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        CardComponent,
+        ModalFormComponent,
+        MainFormComponent,
+        TableComponent,
+    ],
+    bootstrap: [AppComponent],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA], imports: [BrowserModule,
+        AppRoutingModule,
+        NgbModule,
+        ReactiveFormsModule,
+        NgxMaskModule.forRoot(),
+        HotToastModule.forRoot(),
+        NgxLoadingModule.forRoot({}),
+        NgxSpinnerModule,
+        DxDataGridModule,
+        NgxPaginationModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: CustomHttpInterceptor,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
