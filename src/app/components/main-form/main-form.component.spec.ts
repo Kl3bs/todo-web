@@ -2,7 +2,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TaskService } from 'src/app/services/task.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormBuilder } from '@angular/forms';
+import { UntypedFormBuilder } from '@angular/forms';
 import { MainFormComponent } from './main-form.component';
 
 describe('MainFormComponent', () => {
@@ -12,7 +12,7 @@ describe('MainFormComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [MainFormComponent],
-      providers: [FormBuilder, TaskService],
+      providers: [UntypedFormBuilder, TaskService],
       imports: [HttpClientTestingModule, NgbModule],
     }).compileComponents();
   });

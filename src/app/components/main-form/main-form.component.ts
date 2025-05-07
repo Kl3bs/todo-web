@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
 import { TaskService } from 'src/app/services/task.service';
@@ -15,7 +15,7 @@ export class MainFormComponent implements OnInit {
 
   constructor(
     private modalService: NgbModal,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private taskService: TaskService,
     private toastService: HotToastService
   ) {}
