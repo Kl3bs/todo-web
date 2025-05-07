@@ -1,14 +1,14 @@
 import { environment } from './../../environments/environment';
 import { Task } from './../models/task.model';
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  constructor(private http: HttpClient) {}
+  private http = inject(HttpClient);
 
   private _refresh = new Subject<void>();
 
