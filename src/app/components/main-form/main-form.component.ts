@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbDatepickerModule,
+} from '@ng-bootstrap/ng-bootstrap';
 import { HotToastService } from '@ngneat/hot-toast';
 import { TaskService } from 'src/app/services/task.service';
 
@@ -8,6 +17,7 @@ import { TaskService } from 'src/app/services/task.service';
   selector: 'app-main-form',
   templateUrl: './main-form.component.html',
   styleUrls: ['./main-form.component.css'],
+  imports: [NgbDatepickerModule, FormsModule, ReactiveFormsModule],
 })
 export class MainFormComponent implements OnInit {
   closeResult = '';
@@ -63,12 +73,10 @@ export class MainFormComponent implements OnInit {
 
     try {
       this.taskService.update(task).subscribe((response) => {
-        this.toastService.success('Tarefa editada com sucesso!');
         this.modalService.dismissAll();
       });
     } catch (error) {
       console.error(error);
-      this.toastService.error('Não foi possível editar a tarefa!');
     }
   }
 }

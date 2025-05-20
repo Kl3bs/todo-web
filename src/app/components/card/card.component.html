@@ -1,6 +1,4 @@
 <div class="card">
-  <!-- <span class="badge" style="background-color: blue">Primary</span> -->
-
   <div class="card-top">
     <h4 class="card-title d-flex justify-content-between">
       {{ taskData.title }}
@@ -11,7 +9,7 @@
         <div ngbDropdownMenu>
           <button ngbDropdownItem (click)="open(taskData)">Editar</button>
           <div class="dropdown-divider"></div>
-          <button ngbDropdownItem (click)="deleteTask(taskData.id)">
+          <button ngbDropdownItem (click)="deleteTask(taskData.id!)">
             Deletar
           </button>
         </div>
@@ -27,7 +25,7 @@
     <div class="d-flex justify-content-between">
       <p class="date-wrapper">
         <i class="bi bi-calendar4-week"></i>
-        {{ taskData.date_hour | date: "dd/MM/yyyy" }}
+        {{ taskData.date_hour | date : "dd/MM/yyyy" }}
       </p>
       <div class="tag">
         <i class="bi bi-clock"></i> {{ taskData.duration_time }} min

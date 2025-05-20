@@ -1,8 +1,8 @@
 import { environment } from './../../environments/environment';
 import { Task } from './../models/task.model';
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable } from '@angular/core';
-import { Observable, Subject, tap } from 'rxjs';
+import { inject, Injectable, signal } from '@angular/core';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,10 +10,24 @@ import { Observable, Subject, tap } from 'rxjs';
 export class TaskService {
   private http = inject(HttpClient);
 
+  private taskSource = new BehaviorSubject<Task[]>([]);
   private _refresh = new Subject<void>();
+
+  currentTasks = this.taskSource.value;
+
+  //Signals
+  currentTaskSignal = signal<Task[]>([]);
 
   get refreshNeeded(): Observable<any> {
     return this._refresh;
+  }
+
+  updateTaskList(taskList: Task[]) {
+    //Atualiza o observable
+    this.taskSource.next(taskList);
+
+    //Atualiza o signal
+    this.currentTaskSignal.set(taskList);
   }
 
   getAll() {
@@ -31,8 +45,9 @@ export class TaskService {
   }
 
   create(task: Task) {
-    return this.http.post(`${environment.BASE_URL}/tasks`, task).pipe(
-      tap(() => {
+    return this.http.post<Task>(`${environment.BASE_URL}/tasks`, task).pipe(
+      tap((response) => {
+        //Atualiza o observable
         this._refresh.next();
       })
     );

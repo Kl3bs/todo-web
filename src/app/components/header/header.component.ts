@@ -8,11 +8,13 @@ import {
   distinctUntilChanged,
   tap,
 } from 'rxjs';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  imports: [NgbCollapseModule],
 })
 export class HeaderComponent implements AfterViewInit {
   public isCollapsed = true;

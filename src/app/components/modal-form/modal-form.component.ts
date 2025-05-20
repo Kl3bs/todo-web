@@ -1,14 +1,30 @@
 import { TaskService } from './../../services/task.service';
 import { Component, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { UntypedFormBuilder, Validators } from '@angular/forms';
+import {
+  NgbModal,
+  ModalDismissReasons,
+  NgbDatepickerModule,
+} from '@ng-bootstrap/ng-bootstrap';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+  UntypedFormBuilder,
+  Validators,
+} from '@angular/forms';
 
 import { HotToastService } from '@ngneat/hot-toast';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-modal-form',
   templateUrl: './modal-form.component.html',
   styleUrls: ['./modal-form.component.css'],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    NgbDatepickerModule,
+  ],
 })
 export class ModalFormComponent implements OnInit {
   closeResult = '';
@@ -43,7 +59,7 @@ export class ModalFormComponent implements OnInit {
               this.taskService.create(obj).subscribe((response) => {
                 console.log(response);
                 this.task_form.reset();
-                this.toastService.success('Tarefa criada com sucesso!');
+                // this.toastService.success('Tarefa criada com sucesso!');
               });
             } catch (error) {
               console.error(error);
